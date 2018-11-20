@@ -5,10 +5,13 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+var Tabulator = require('tabulator-tables');
+var moment = require('moment');
 
 // Sets up the Express App
 // =============================================================
 var app = express();
+
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
@@ -24,13 +27,17 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 require("./routes/html-routes.js")(app);
-// require("./routes/author-api-routes.js")(app);
+require("./routes/member-det-api-routes.js")(app);
 // require("./routes/post-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+// db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false, logging: console.log})
+  .then(function () {
+    app.listen(PORT, function () {
+      console.log("App listening on PORT " + PORT);
+    });
+  }).catch(function (error) {
+    console.log(error)
   });
-});
