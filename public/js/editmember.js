@@ -12,6 +12,8 @@ $(document).ready(function () {
     var inputphone = $("#inputphone");
     var inputDoj = $("#inputDoj");
     var inputemail = $("#inputemail");
+    var inputstatus = $("#status");
+    var sessionMemberid = "";
 
     $(document).on("submit", "#member-frm-id", handleMemberFetchSubmit);
     $(document).on("submit", "#member-frm", handleMemberFormSubmit);
@@ -19,9 +21,6 @@ $(document).ready(function () {
     function handleMemberFetchSubmit(event) {
         event.preventDefault();
         memberID = $("#inpid").val().trim();
-        // if (memberID) {
-        //     memberID = "id=" + memberID
-        // }
 
         $.get("/api/getmember/" + memberID, function(memberdetail){
             console.log("Member info", memberdetail);
@@ -38,14 +37,16 @@ $(document).ready(function () {
             $("#inputphone").val(memberdetail.phone);
             $("#inputDoj").val(memberdetail.date_of_join);
             $("#inputemail").val(memberdetail.email);
+            $("#status").val(memberdetail.status);
+            sessionMemberid = memberdetail.id;
         })
-
     };
 
     function handleMemberFormSubmit(event) {
         event.preventDefault();
 
-        createMember({
+        updateMember({
+            id: sessionMemberid,
             first_name: fname.val().trim(),
             last_name: lname.val().trim(),
             date_of_birth: inputdob.val().trim(),
@@ -58,21 +59,37 @@ $(document).ready(function () {
             phone: inputphone.val().trim(),
             email: inputemail.val().trim(),
             date_of_join: inputDoj.val().trim(),
-            status: "ACTIVE"
+            status: inputstatus.val().trim()
         });
 
     }
 
-    function createMember(memberData) {
-        $.post("/api/members", memberData,)
-            .done(function(msg){alert("Member record added successfully")})
-            .fail(function(xhr,status,error){
-                var errorMsg = "";
-                for (let i=0; i< xhr.responseJSON.length ; i++){
-                    errorMsg += xhr.responseJSON[i].message + "\n";
-                }
-                alert(errorMsg);
-            });
+    function updateMember(memberData) {
+        console.log("Session member id " + sessionMemberid);
+
+        $.ajax({
+            method: "PUT",
+            url: "/api/members/",
+            data: memberData,
+            success: function(data, textStatus, xhr){
+                alert("Member record updated successfully");
+            },
+            error: function(xhr, textStatus, errorThrown){
+                console.log(xhr);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+        });
+
+        // $.put("/api/members" + sessionMemberid, memberData,)
+        //     .done(function(msg){alert("Member record Updated successfully")})
+        //     .fail(function(xhr,status,error){
+        //         var errorMsg = "";
+        //         for (let i=0; i< xhr.responseJSON.length ; i++){
+        //             errorMsg += xhr.responseJSON[i].message + "\n";
+        //         }
+        //         alert(errorMsg);
+        //     });
     }
 
 });
