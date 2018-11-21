@@ -124,7 +124,9 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       len: [15],
-    },
+    }
+  },{
+    freezeTableName: true
   });
 
   Member_details.associate = function (models) {

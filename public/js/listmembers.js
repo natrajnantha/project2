@@ -12,7 +12,7 @@ function getMembers() {
 
         var table = new Tabulator("#member-table", {
             data:data,
-            height:"280px",
+            height:"350px",
             layout:"fitColumns",
             pagination:"local",
             paginationSize:6,
@@ -27,6 +27,9 @@ function getMembers() {
                      {title:"Join date", field:"date_of_join"},
                      {title:"Status", field:"status"},
                     ],
+                    rowClick:function(e, row){
+                        alert("Row " + row.getIndex() + " Clicked!!!!")
+                    },
         });
     });
 };

@@ -36,16 +36,32 @@ module.exports = function (app) {
             console.log(err.errors);
         });
     });
+
+    app.put("/api/members/", function(req, res){
+        db.Member_details.update({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            date_of_birth: req.body.date_of_birth,
+            address_line1: req.body.address_line1,
+            address_line2: req.body.address_line2,
+            address_line3: req.body.address_line3,
+            city: req.body.city,
+            state: req.body.state,
+            zipcode: req.body.zipcode,
+            phone: req.body.phone,
+            date_of_join: req.body.date_of_join,
+            email: req.body.email,
+            status: req.body.status
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function(dbMember_details){
+            res.json(dbMember_details);
+        });
+    });
 };
 
-// models.Item.create({
-//     title: req.body.title,
-//     UserId: req.body.UserId
-// }).then(function (item) {
-//     res.json({
-//         "Message": "Created item.",
-//         "Item": item
-//     });
-// }).catch(function (err) {
-//     res.json(err);
-// });
+
+
+
