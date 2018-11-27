@@ -22,8 +22,10 @@ $(document).ready(function () {
         event.preventDefault();
         memberID = $("#inpid").val().trim();
 
+// Call the get method to read the member record based on the input id        
         $.get("/api/getmember/" + memberID, function(memberdetail){
             console.log("Member info", memberdetail);
+            if (memberdetail){
             console.log("Member first name " + memberdetail.first_name);
             $("#fname").val(memberdetail.first_name);
             $("#lname").val(memberdetail.last_name);
@@ -39,9 +41,14 @@ $(document).ready(function () {
             $("#inputemail").val(memberdetail.email);
             $("#status").val(memberdetail.status);
             sessionMemberid = memberdetail.id;
+        } else {
+            alert("Member info not found");
+        }
+            
         })
     };
 
+// This function updates the member details to member_details table    
     function handleMemberFormSubmit(event) {
         event.preventDefault();
 
@@ -64,8 +71,8 @@ $(document).ready(function () {
 
     }
 
+// Call put method to update the member info to the member_details table    
     function updateMember(memberData) {
-        console.log("Session member id " + sessionMemberid);
 
         $.ajax({
             method: "PUT",
@@ -81,15 +88,6 @@ $(document).ready(function () {
             }
         });
 
-        // $.put("/api/members" + sessionMemberid, memberData,)
-        //     .done(function(msg){alert("Member record Updated successfully")})
-        //     .fail(function(xhr,status,error){
-        //         var errorMsg = "";
-        //         for (let i=0; i< xhr.responseJSON.length ; i++){
-        //             errorMsg += xhr.responseJSON[i].message + "\n";
-        //         }
-        //         alert(errorMsg);
-        //     });
     }
 
 });

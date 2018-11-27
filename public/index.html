@@ -17,80 +17,73 @@
 
 <body>
 
-    <div class="wrapper">
-        <nav id="sidebar">
-          <div class="sidebar-header">
-            <h3>Library Management</h3>
-          </div>
-    
-          <ul class="list-unstyled components">
-            <li class="active">
-              <a href="#memberSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fas fa-book-reader"></i> Memeber Maint.</a>
-              <ul class="collapse list-unstyled" id="memberSubmenu">
-                <li>
-                  <a href="/newmember">Add New Member</a>
-                </li>
-                <li>
-                  <a href="/editmember">Edit Member</a>
-                </li>
-                <li>
-                  <a href="/listmember">List Members</a>
-                </li>
-              </ul>
-            </li>
-    
+  <div class="wrapper">
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>Library Management</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <li class="active">
+          <a href="#memberSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fas fa-book-reader"></i> Memeber Maint.</a>
+          <ul class="collapse list-unstyled" id="memberSubmenu">
             <li>
-              <a href="#bookSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fas fa-book"></i> Book Maintenance</a>
-              <ul class="collapse list-unstyled" id="bookSubmenu">
-                <li>
-                  <a href="/addbook">Add Book inventory</a>
-                </li>
-                <li>
-                  <a href="/editbook">Update Book info</a>
-                </li>
-                <li>
-                  <a href="/listbook">List Books</a>
-                </li>
-              </ul>
+              <a href="/newmember">Add New Member</a>
             </li>
-    
             <li>
-              <a href="#rentalSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fas fa-reply"></i> Rental Maintenace</a>
-              <ul class="collapse list-unstyled" id="rentalSubmenu">
-                <li>
-                  <a href="/addrental">Add new rental</a>
-                </li>
-                <li>
-                  <a href="/updaterental">Update rental</a>
-                </li>
-                <li>
-                  <a href="/listrental">List Rental details</a>
-                </li>
-              </ul>
+              <a href="/editmember">Edit Member</a>
             </li>
-    
             <li>
-              <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fas fa-file-download"></i> Reports</a>
-              <ul class="collapse list-unstyled" id="reportsSubmenu">
-                <li>
-                  <a href="/report1">List1</a>
-                </li>
-                <li>
-                  <a href="/report2">List2</a>
-                </li>
-                <li>
-                  <a href="/report3">List3</a>
-                </li>
-              </ul>
+              <a href="/listmember">List Members</a>
             </li>
           </ul>
-    
-        </nav>
-    
+        </li>
+
+        <li>
+          <a href="#bookSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fas fa-book"></i> Book Maintenance</a>
+          <ul class="collapse list-unstyled" id="bookSubmenu">
+            <li>
+              <a href="/addbook">Add Book inventory</a>
+            </li>
+            <li>
+              <a href="/editbook">Update Book info</a>
+            </li>
+            <li>
+              <a href="/listbook">List Books</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#rentalSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fas fa-reply"></i> Rental Maintenace</a>
+          <ul class="collapse list-unstyled" id="rentalSubmenu">
+            <li>
+              <a href="/addrental">Add new rental</a>
+            </li>
+            <li>
+              <a href="/updaterental">Update rental</a>
+            </li>
+            <li>
+              <a href="/listrental">List Rental details</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fas fa-file-download"></i> Reports</a>
+          <ul class="collapse list-unstyled" id="reportsSubmenu">
+              <li>
+                  <a href="/report1">Manage Delinquency</a>
+                </li>
+              </ul>
+        </li>
+      </ul>
+    </nav>
+
     <div class="content topnav">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
@@ -109,33 +102,107 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/home">Home
-                    <span class="sr-only">(current)</span>
+              <a class="nav-link" href="/home">Home
+                <span class="sr-only">(current)</span>
               </a>
             </li>
           </ul>
         </div>
       </nav>
+
+      <div id="page-wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="display-4 d-none d-sm-block">
+              Dashboard
+            </h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card bg-success text-white h-100">
+              <div class="card-body bg-success">
+                <div class="rotate">
+                  <i class="fa fa-user fa-4x"></i>
+                </div>
+                <h6 class="text-uppercase">Total Members</h6>
+                <h1 id="lbltotalMembers" class="display-4">134</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card bg-info text-white h-100">
+              <div class="card-body bg-info">
+                <div class="rotate">
+                  <i class="fa fa-book fa-4x"></i>
+                </div>
+                <h6 class="text-uppercase">Total Books Inventory</h6>
+                <h1 id="lbltotalBooks" class="display-4">134</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card bg-danger text-white h-100">
+              <div class="card-body bg-danger">
+                <div class="rotate">
+                  <i class="fa fa-user fa-4x"></i>
+                </div>
+                <h6 class="text-uppercase">Total Members Delinquent</h6>
+                <h1 id="lbltotalDelinquent" class="display-4">1</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card bg-success text-white h-100">
+              <div class="card-body bg-success">
+                <div class="rotate">
+                  <i class="fa fa-user fa-4x"></i>
+                </div>
+                <h6 class="text-uppercase">Total books rented</h6>
+                <h1 id="lbltotalRented" class="display-4">134</h1>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+      </div>
     </div>
-  </div>
 
 
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"></script> -->
 
-  <script>
-    $(document).ready(function () {
-      $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-      });
-    });  
-  </script>
 
+      <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script>
+      <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+  
+      <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+          crossorigin="anonymous"></script>
+        <script src="js/index.js" type="text/javascript"></script>
+
+    <script>
+      $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+          $('#sidebar').toggleClass('active');
+        });
+      });  
+    </script>
 
 
 

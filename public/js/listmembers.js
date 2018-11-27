@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 getMembers();
 
+// the below function lists the members in tabulator control. The tabulator allows the user to filter and sort the table data
 function getMembers() {
     $.get("api/listmembers", function(data){
         var rowsToAdd = [];

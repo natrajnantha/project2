@@ -1,7 +1,40 @@
 var db = require("../models");
+var Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 module.exports = function (app) {
 
+    app.get("/api/indexdashboard", function (req, res) {
+
+        db.Member_details.count().then(function (dbmbrcnt) {
+            console.log("******Number of Member****");
+            console.log(dbmbrcnt);
+            n_dbmbrcnt = dbmbrcnt;
+
+            db.Rental_book_details.count().then(function (dbbkcnt) {
+                console.log("******Number of Books****");
+                console.log(dbbkcnt);
+                n_dbbkcnt = dbbkcnt;
+
+                db.Member_rental_info.count({ where: { rental_status: { [Op.notIn]: ["RETURNED", "OMPLETED"] } } }).then(function (dbtotalrented) {
+                    console.log("******Number of Books Rented****");
+                    console.log(dbtotalrented);
+                    n_dbtotalrented = dbtotalrented;
+
+                    db.Member_rental_info.count({ where: { return_due_date: { [Op.lt]: new Date() } , rental_status: { [Op.notIn]: ["RETURNED", "COMPLETED"] }} }).then(function (dbtotdel) {
+                        console.log("******Number of Books Delinquent****");
+                        console.log(dbtotdel);
+
+                        res.json({ mbrCount: dbmbrcnt, bookCount: dbbkcnt, rentalCount: dbtotalrented, delinquentCount: dbtotdel });
+                    });
+                });
+
+            });
+
+        });
+
+
+    });
 
     app.get("/api/listmembers", function (req, res) {
         db.Member_details.findAll({}).then(function (dbMember_details) {
@@ -9,12 +42,12 @@ module.exports = function (app) {
         });
     });
 
-    app.get("/api/getmember/:id", function(req, res){
+    app.get("/api/getmember/:id", function (req, res) {
         db.Member_details.findOne({
-            where:{
+            where: {
                 id: req.params.id
             }
-        }).then(function(dbMember_details){
+        }).then(function (dbMember_details) {
             console.log(dbMember_details);
             res.json(dbMember_details);
         });
@@ -29,7 +62,7 @@ module.exports = function (app) {
                 "Message": "Created Member record",
                 "Name ": dbMember_details.last_name
             });
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.log("Library error : " + err);
             res.status(422).send(err.errors);
             console.log("*************");
@@ -37,7 +70,7 @@ module.exports = function (app) {
         });
     });
 
-    app.put("/api/members/", function(req, res){
+    app.put("/api/members/", function (req, res) {
         db.Member_details.update({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
@@ -53,12 +86,12 @@ module.exports = function (app) {
             email: req.body.email,
             status: req.body.status
         }, {
-            where: {
-                id: req.body.id
-            }
-        }).then(function(dbMember_details){
-            res.json(dbMember_details);
-        });
+                where: {
+                    id: req.body.id
+                }
+            }).then(function (dbMember_details) {
+                res.json(dbMember_details);
+            });
     });
 };
 

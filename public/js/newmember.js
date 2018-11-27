@@ -37,7 +37,7 @@ $(document).ready(function () {
     }
 
     function createMember(memberData) {
-        $.post("/api/members", memberData,)
+        $.post("/api/members", memberData)
             .done(function(msg){alert("Member record added successfully")})
             .fail(function(xhr,status,error){
                 var errorMsg = "";
