@@ -5,7 +5,8 @@ p{font-family: 'Poppins', sans-serif;
   font-size: 1.1em;
 	font-weight: 300;
 	line-height: 1.7em;
-	color: #999;
+	/* color: #999; */
+	color: whitesmoke;
 }
 a,
 a:hover,
@@ -20,7 +21,8 @@ a:focus{
 	border: none;
 	border-radius: 0;
 	margin-bottom: 40px;
-	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    color: #fff;
 }
 
 .navbar-btn{
@@ -142,7 +144,7 @@ a.article:hover {
   z-index: 2;
   font-size: 16px;
   background-color:blanchedalmond;
-  color: #f1f1f1;
+  /* color: #f1f1f1; */
   width: 100%;
   padding: 0;
   letter-spacing: 0px;
@@ -181,32 +183,95 @@ form label{
   margin: 50px 0px 0px 0px;
 }
 
-/*#member-table .tabulator-header {
-  background-color:#333!important;
-  color:rgb(160, 24, 24);
+#booklist-table{
+    background-color:#E6E6E6;
+    border: 1px solid #333;
+    border-radius: 10px;
+    width: 100%;
+    /* margin: 165px 270px 0px 20px; */
+    margin: 0px 0px 0px 0px;
+  }
+  
+/* Delinquency detail report styles */
+table#member-del-detail {
+    border-collapse: collapse;   
+}
+#member-del-detail tr {
+    background-color: #eee;
+    color: #333;
+}
+#member-del-detail tr:hover {
+    background-color: red;
+    color: blue;
+}
+#member-del-detail th {
+    background-color: #fff;
 }
 
-#example-table-theme .tabulator-tableHolder .tabulator-table .tabulator-row{
-  color:#fff;
-  background-color: #666;
+#member-del-detail th, #member-del-detail td {
+    padding: 3px 5px;
+}
+#member-del-detail td:hover {
+    cursor: pointer;
 }
 
-  #example-table-theme .tabulator-tableHolder .tabulator-table .tabulator-row:nth-child(even) {
-  background-color: #444;
+
+/* Model style */
+
+.model-container{
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    background: #47748b;
+    border: 3px solid darkgreen;
+  }
+  
+.model-wrapper {
+    background: #92bde7;
+    color: #333;
+    line-height:1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding:1em;
+
 }
 
+#cmsgbody ul {
+    list-style: none;
+	padding: 0;
+	font-size: 1.1em;
+	display: block;
+}
 
- */
+.wrapper{
+    box-shadow: 0 0 20px 0 rgba(72,94,116,0.7);
+  }
+  
+  .wrapper > *{
+    padding: 1em;
+  }
+  
 
+  #page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+  }
 
+  
 
+  #addbook-frm {
+    border: 6px solid cadetblue;
+    padding: 35px;
+    margin: 10px 50px 20px 40px;
+  }
 
+  #book-frm {
+    border: 6px solid cadetblue;
+    padding: 35px;
+    margin: 10px 50px 20px 40px;
+  }
+  
 
-
-
-
-
-
-
-
-
+#selected-book-container {
+    margin: 10px;
+}

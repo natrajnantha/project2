@@ -35,4 +35,20 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/listdelinquency.html"));
   });
 
+  app.get("/addbook", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/addbook.html"));
+  });
+
+  app.get("/editbook", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/editbook.html"));
+  });
+
+  app.get("/listbook", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/listbook.html"));
+  });
+
+  app.get("/addrental", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/addrental.html"));
+  });
+
 };

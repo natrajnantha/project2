@@ -62,13 +62,13 @@ module.exports = function (sequelize, DataTypes) {
                 },
             }
         },
-        category: {
+        book_author: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: {
                     args: [1, 50],
-                    msg: 'Please enter a valid book category'
+                    msg: 'Please enter a valid book author'
                 },
             }
         }
