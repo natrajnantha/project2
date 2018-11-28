@@ -43,3 +43,4 @@ db.sequelize.sync({ force: false, logging: console.log})
   }).catch(function (error) {
     console.log(error)
   });
+//help
