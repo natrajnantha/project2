@@ -33,12 +33,15 @@ module.exports = function (app) {
         });
     });
     app.put("/api/editbook/", function(req, res){
+        var bookObj = req.body;
+        
         db.Rental_book_details.update({
             title: req.body.title,
-            book_author: req.body.author,
-            book_summary: req.body.summary,
-            rack_location: req.body.location,
-            edition_number: req.body.edition,
+            book_author: req.body.book_author,
+            book_summary: req.body.book_summary,
+            rack_location: req.body.rack_location,
+            edition_number: req.body.edition_number,
+            stock_status: req.body.stock_status,
            
         }, {
             where: {
